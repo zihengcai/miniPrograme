@@ -5,7 +5,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-      msg:'caicai'
+      msg:'caicai',
+      userinfo: {}
   },
   handleParent(){
     console.log('父元素');
@@ -18,7 +19,16 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    //初始化 发送请求 定时器
+    //获取用户登陆信息 老方法
+    wx.getUserInfo({
+      success:(data)=>{
+        console.log(data);
+        this.setData({
+          userinfo: data.userInfo
+        })
+      }
+    })
   },
 
   /**
